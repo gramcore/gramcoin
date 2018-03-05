@@ -1,0 +1,22 @@
+[Unit]
+Description=GRAM's distributed currency daemon
+After=network.target
+
+[Service]
+User=gram
+Group=gram
+
+Type=forking
+PIDFile=/var/lib/gramd/gramd.pid
+ExecStart=/usr/bin/gramd -daemon -pid=/var/lib/gramd/gramd.pid \
+-conf=/etc/gram/gram.conf -datadir=/var/lib/gramd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+# /etc/conf.d/gramd: config file for /etc/init.d/gramd
+
+# Config file location
+#GRAMD_CONFIGFILE="/etc/gram/gram.conf"
+
+# What directory to write pidfile to?  (created and owned by $GRAMD_USER)
+#GRAMD_PIDDIR="/var/run/gramd"
+
+# What filename to give the pidfile
+#GRAMD_PIDFILE="${GRAMD_PIDDIR}/gramd.pid"
+
+# Where to write gramd data (be mindful that the blockchain is large)
+#GRAMD_DATADIR="/var/lib/gramd"
+
+# User and group to own gramd process
+#GRAMD_USER="gram"
+#GRAMD_GROUP="gram"
+
+# Path to gramd executable
+#GRAMD_BIN="/usr/bin/gramd"
+
+# Nice value to run gramd under
+#GRAMD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#GRAMD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for gramd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+GRAMD_SIGTERM_TIMEOUT=60

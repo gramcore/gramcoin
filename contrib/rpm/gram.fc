@@ -1,0 +1,8 @@
+/usr/bin/gram-cli		--	gen_context(system_u:object_r:gram_exec_t,s0)
+/usr/sbin/gramd		--	gen_context(system_u:object_r:gram_exec_t,s0)
+/usr/lib(64)?/gram/gramd		--	gen_context(system_u:object_r:gram_exec_t,s0)
+
+/etc/gram(/.*)?		gen_context(system_u:object_r:gram_conf_t,s0)
+/var/lib/gram(/.*)?		gen_context(system_u:object_r:gram_var_lib_t,s0)
+
+(/var)?/run/gramd(/.*)?   gen_context(system_u:object_r:gram_var_run_t,s0)

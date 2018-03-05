@@ -1,0 +1,81 @@
+policy_module(gram, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type gram_t;
+type gram_exec_t;
+init_daemon_domain(gram_t, gram_exec_t)
+
+permissive gram_t;
+
+type gram_initrc_exec_t;
+init_script_file(gram_initrc_exec_t)
+
+type gram_conf_t;
+files_type(gram_conf_t)
+
+type gram_var_lib_t;
+files_type(gram_var_lib_t)
+
+type gram_var_run_t;
+files_type(gram_var_run_t)
+
+type gram_port_t;
+corenet_port(gram_port_t)
+
+########################################
+#
+# gram local policy
+#
+allow gram_t self:process { fork };
+
+allow gram_t self:fifo_file rw_fifo_file_perms;
+allow gram_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(gram_t, gram_conf_t, gram_conf_t)
+manage_files_pattern(gram_t, gram_conf_t, gram_conf_t)
+
+manage_dirs_pattern(gram_t, gram_var_lib_t, gram_var_lib_t)
+manage_files_pattern(gram_t, gram_var_lib_t, gram_var_lib_t)
+files_var_lib_filetrans(gram_t, gram_var_lib_t, { dir file })
+
+manage_dirs_pattern(gram_t, gram_var_run_t, gram_var_run_t)
+manage_files_pattern(gram_t, gram_var_run_t, gram_var_run_t)
+
+sysnet_dns_name_resolve(gram_t)
+corenet_all_recvfrom_unlabeled(gram_t)
+
+allow gram_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(gram_t)
+corenet_tcp_sendrecv_generic_node(gram_t)
+corenet_tcp_sendrecv_all_ports(gram_t)
+corenet_tcp_bind_generic_node(gram_t)
+
+gen_require(`
+    type gram_port_t;
+')
+allow gram_t gram_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type gram_port_t;
+')
+allow gram_t gram_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(gram_t)
+
+files_read_etc_files(gram_t)
+
+miscfiles_read_localization(gram_t)
+
+sysnet_dns_name_resolve(gram_t)
+
+allow gram_t gram_exec_t:file execute_no_trans;
+allow gram_t self:process setsched;
+corecmd_exec_ls(gram_t)
+corenet_tcp_connect_http_port(gram_t)
+dev_read_urand(gram_t)
+fs_getattr_xattr_fs(gram_t)
+kernel_read_system_state(gram_t)
