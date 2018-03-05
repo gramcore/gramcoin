@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GRAM Core
+Comment=Connect to the GRAM P2P Network
+Comment[de]=Verbinde mit dem GRAM peer-to-peer Netzwerk
+Comment[fr]=GRAM, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=GRAM, eşten eşe kriptografik sanal para birimi
+Exec=gram-qt %u
+Terminal=false
+Type=Application
+Icon=gram128
+MimeType=x-scheme-handler/gram;
+Categories=Office;Finance;

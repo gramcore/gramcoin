@@ -1,0 +1,11 @@
+[Protocol]
+exec=gram-qt '%u'
+protocol=gram
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

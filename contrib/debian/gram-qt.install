@@ -1,0 +1,6 @@
+usr/local/bin/gram-qt usr/bin
+share/pixmaps/gram32.xpm usr/share/pixmaps
+share/pixmaps/gram16.xpm usr/share/pixmaps
+share/pixmaps/gram128.png usr/share/pixmaps
+debian/gram-qt.desktop usr/share/applications
+debian/gram-qt.protocol usr/share/kde4/services/
