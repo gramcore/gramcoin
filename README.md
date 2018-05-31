@@ -1,6 +1,6 @@
 # GRAM Coin
 
-![alt text](https://gramcore.org/cdn/gram_128x128.png)
+![alt text](https://avatars1.githubusercontent.com/u/36583097?s=115&v=4)
 
 Name: GRAM Coin  
 Ticker: GRAM  
@@ -11,7 +11,10 @@ Total supply: 65360000
 Halving rate: 144000 blocks  
 Block reward: 220 GRAM  
 Block time: 2 minutes  
-Block size: 4 MB    
+Block size: 4 MB   
+
+RPC port: 7566
+Net port: 7567
 
 SegWit: Activated    
 
